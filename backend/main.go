@@ -21,4 +21,5 @@ func DoHealthCheck(w http.ResponseWriter, r *http.Request) {
 
 func test(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "test")
+	//
 }
