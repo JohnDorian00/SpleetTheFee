@@ -1,12 +1,26 @@
-version: "3.6"
+version: "3.8"
 services:
-  goservice:
+  backend:
     build: "./backend"
+    env_file: .env.local
     ports:
-      - "8080"
+      - "8080:8080"
+  frontend:
+    build: "./frontend"
+    env_file: .env.local
+    ports:
+      - "3000:3000"
+    volumes:
+      - front_app:/app/build
   nginx:
     build: "./nginx"
+    env_file: .env.local
     ports:
       - "80:80"
     depends_on:
-      - "goservice"
+      - "backend"
+      - "frontend"
+    volumes:
+      - front_app:/usr/share/nginx/html
+volumes:
+  front_app:
