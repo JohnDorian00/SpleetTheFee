@@ -2,19 +2,16 @@ version: "3.8"
 services:
   backend:
     build: "./backend"
-    env_file: .env.local
     ports:
       - "8080:8080"
   frontend:
     build: "./frontend"
-    env_file: .env.local
     ports:
       - "3000:3000"
     volumes:
       - front_app:/app/build
   nginx:
     build: "./nginx"
-    env_file: .env.local
     ports:
       - "80:80"
     depends_on:
