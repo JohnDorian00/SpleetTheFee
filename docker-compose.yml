@@ -4,20 +4,20 @@ services:
     build: "./backend"
     ports:
       - "8080:8080"
-  frontend:
-    build: "./frontend"
-    ports:
-      - "3000:3000"
-    volumes:
-      - front_app:/app/build
+#  frontend:
+#    build: "./frontend"
+#    ports:
+#      - "3000:3000"
+#    volumes:
+#      - front_app:/app/build
   nginx:
     build: "./nginx"
     ports:
       - "80:80"
     depends_on:
       - "backend"
-      - "frontend"
-    volumes:
-      - front_app:/usr/share/nginx/html
-volumes:
-  front_app:
+#      - "frontend"
+#    volumes:
+#      - front_app:/usr/share/nginx/html
+#volumes:
+#  front_app:
