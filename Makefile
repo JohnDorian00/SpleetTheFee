@@ -1,9 +1,10 @@
 # Docker Makefile
-.PHONY: start
 up:
-	docker-compose down
-	docker-compose build
-	docker-compose up -d
+	docker-compose up -d --build
 
 down:
 	docker-compose down
+
+restart:
+	docker-compose down
+	docker-compose up -d --build
