@@ -4,7 +4,8 @@ COPY package.json ./
 COPY package-lock.json ./
 COPY ./ ./
 RUN npm i
-CMD ["npm", "run", "build"]
-#npm run build
-#EXPOSE 3000
-#CMD ["npm", "run", "start"]
+
+#CMD ["npm", "run", "build"]
+
+EXPOSE 3000
+CMD ["npm", "run", "start"]
