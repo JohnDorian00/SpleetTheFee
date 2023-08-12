@@ -4,22 +4,20 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-
-	"github.com/gorilla/mux"
 )
 
 func main() {
-	router := mux.NewRouter()
-	router.HandleFunc("/", DoHealthCheck).Methods("GET")
-	router.HandleFunc("/test", test).Methods("GET")
-	log.Fatal(http.ListenAndServe(":8080", router))
+
+	http.HandleFunc("/hello", HelloHandler)
+
+	log.Println("Listening...")
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
-func DoHealthCheck(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello, i'm a golang microservice")
-}
+func HelloHandler(w http.ResponseWriter, _ *http.Request) {
 
-func test(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "test")
-	//
+	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Max-Age", "15")
+	fmt.Fprintf(w, "Hello, there!")
 }
