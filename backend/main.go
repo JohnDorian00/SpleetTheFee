@@ -4,12 +4,15 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+
+	exp "backend/testing"
 )
 
 func main() {
-
+	// Запуск кода из полигона
+	exp.Main()
+	//_____________________________________________________________________
 	http.HandleFunc("/hello", HelloHandler)
-
 	log.Println("Listening...")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
